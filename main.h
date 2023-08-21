@@ -57,7 +57,7 @@ int print_hexa(va_list types, char map[], char buffer[], int flags, char flag_ch
 int print_hexa_toUpper(va_list types, char buffer[], int flags, int width, int precision, int size);
 
 /* width handlers */
-int write_unsigned(int is_negative, int index, char buffer[], int flags, int width, int precision, int size);
+int write_unsgnd(int is_negative, int index, char buffer[], int flags, int width, int precision, int size);
 int handle_write_char(char c, char buffer[], int flags, int width, int precision, int size);
 int write_number(int is_positive, int index, char buffer[], int flags, int width, int precision, int size);
 int write_pointer(char buffer[], int index, int len, int width, int flags, char pad, char extra_c, int pad_start);

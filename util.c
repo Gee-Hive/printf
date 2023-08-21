@@ -57,3 +57,22 @@ int is_printable(char c)
 		return (1);
 	return (0);
 }
+/**
+ * append_hexa_code - Append ascii in hexadecimal code to buffer
+ * @buffer: Array of chars.
+ * @i: Index at which to start appending.
+ * @ascii_code: ASCII CODE.
+ * Return: Always 3
+ */
+int append_hexa_code(char ascii_code, char buffer[], int i)
+{
+	char map[] = "0123456789ABCDEF";
+	if (ascii_code < 0)
+		ascii_code *= 1;
+	
+	buffer[i++] = '\\';
+	buffer[i++] = 'x';
+	buffer[i++] = map[ascii_code / 16];
+	buffer[i] = map[ascii_code % 16];
+	return (3);
+}

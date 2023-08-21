@@ -14,7 +14,7 @@ int print_unsigned(va_list types, char buffer[], int flags, int width, int preci
 	int i = BUFFER_SIZE - 2;
 	unsigned long int number = va_arg(types, unsigned long int);
 
-	number = convert_size_unsgnd(num, size);
+	number = convert_size_unsgnd(number, size);
 
 	if (number == 0)
 		buffer[i--] = '0';
@@ -116,7 +116,7 @@ int print_hexa(va_list types, char map[], char buffer[], int flags, char flag_ch
 
 	UNUSED(width);
 
-	number = convert_size_unsgnd(num, size);
+	number = convert_size_unsgnd(number, size);
 
 	if (number == 0)
 		buffer[i--] = '0';
