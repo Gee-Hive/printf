@@ -132,3 +132,47 @@ int print_int(va_list types, char buffer[], int flags, int width, int precision,
 
 	return (write_number(is_negative, i, buffer, flags, width, precision, size));
 }
+
+/**
+ * print_binary - Prints an unsigned number
+ * @types: Lista of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @width: get width.
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Numbers of char printed.
+ */
+int print_binary(va_list types, char buffer[], int flags, int width, int precision, int size)
+{
+	unsigned int n, m, o, sum;
+	unsigned int a[32];
+	int counter;
+	char z;
+
+	UNUSED(buffer);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
+
+	n = va_arg(types, unsigned int);
+	m = 2147483648;
+	a[0] = n/m;
+	for (o = 1; o < 32; o++)
+	{
+		m /= 2;
+		a[o] = (n / m) % 2;
+	}
+	for (o = 0, sum = 0, counter = 0; o < 32; o++)
+	{
+		sum += a[o];
+		if (sum || o == 31)
+		{
+			z = '0' + a[o];
+			write(1, &z, 1);
+			count++;
+		}
+	}
+	return (count);
+}
