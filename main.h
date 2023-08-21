@@ -15,8 +15,8 @@
 #define FS_SPACE 16
 
 /*sizes */
-#define SS_LONG 2
-#define SS_SHORT 1
+#define S_LONG 2
+#define S_SHORT 1
 
 /**
  * struct fmt - struct op
@@ -40,7 +40,7 @@ struct fmt
 typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
-int handle _print(const char *fmt, int *i, va_list list, char buffer[], int flags, int width, int precision, int size);
+int handle_print(const char *fmt, int *i, va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /*functions for printing chars and strings */
 int print_char(va_list types, char buffer[], int flags, int width, int precision, int size);
@@ -76,6 +76,12 @@ int get_size(const char *format, int *i);
 int is_printable(char);
 int append_hexa_code(char, char[], int);
 int is_digit(char);
+int is_printable(char);
+int append_hexa_code(char, char[], int);
+int is_digit(char);
+
+long int convert_size_number(long int num, int size);
+long int convert_size_unsigned(unsigned long int num, int size);
 
 
 #endif
