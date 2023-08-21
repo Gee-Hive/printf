@@ -67,10 +67,10 @@ int write_num(int index, char buffer[], int flags, int width, int precision, int
 int print_pointer(va_list types, char buffer[], int flags, int width, int precision, int size);
 
 /* functions for handling some other specifiers */
-int get_flags(const char *format, int *i);
-int get_width(const char *format, int *i, va_list lists);
-int get_precision(const char *format, int *i, va_list lists);
-int get_size(const char *format, int *i);
+int retrieve_flags(const char *format, int *i);
+int retrieve_width(const char *format, int *i, va_list lists);
+int retrieve_precision(const char *format, int *i, va_list lists);
+int retrieve_size(const char *format, int *i);
 
 /* utils */
 int is_printable(char);
