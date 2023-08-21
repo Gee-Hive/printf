@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 
-	va_start(list, format);
+	va_start(lists, format);
 
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
@@ -30,20 +30,20 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			print_buffer(buffer, &buffer_ind);
+			print_buffer(buffer, &buffer_index);
 			flags = retrieve_flags(format, &i);
-			width = retrieve_width(format, &i, list);
-			precision = retrieve_precision(format, &i, list);
+			width = retrieve_width(format, &i, lists);
+			precision = retrieve_precision(format, &i, lists);
 			size = retrieve_size(format, &i);
 			++i;
-			printed = handle_print(format, &i, list, buffer, flags, width, precision, size);
+			printed = handle_print(format, &i, lists, buffer, flags, width, precision, size);
 			if (printed == -1)
 				return (-1);
 			printed_chars += printed;
 		}
 	}
 	print_buffer(buffer, &buffer_index);
-	va_end(list);
+	va_end(lists);
 	return (printed_chars);
 }
 /**

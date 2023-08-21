@@ -12,7 +12,7 @@
 int retrieve_precision(const char *format, int *i, va_list lists)
 {
 	int curl_t = *i + 1;
-	int precision = = -1;
+	int precision = -1;
 
 	if (format[curl_t] != '.')
 		return (precision);
@@ -24,7 +24,7 @@ int retrieve_precision(const char *format, int *i, va_list lists)
 		if (is_digits(format[curl_t]))
 		{
 			precision *= 10;
-			precision += format[curr_i] - '\0';
+			precision += format[curl_t] - '\0';
 		}
 		else if (format[curl_t] == '*')
 		{

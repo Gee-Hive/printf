@@ -24,15 +24,15 @@ int handle_print(const char *fmt, int *i, va_list lists, char buffer[], int flag
 	
 	for (index = 0; fmt_types[index].fmt != '\0'; i++)
 		if (fmt[*i] == fmt_types[index].fmt)
-			return (fmt_types[index].fn(list, buffer, flags, width, precision, size));
+			return (fmt_types[index].fn(lists, buffer, flags, width, precision, size));
 	if (fmt_types[index].fmt == '\0')
 	{
-		if (fmt[*i] == '\0)
+		if (fmt[*i] == '\0')
 			return (-1);
 		unknown_length += write(1, "%%", 1);
 		
 		if (fmt[*i - 1] == '')
-			unknown_length +- write(1, " " 1);
+			unknown_length += write(1, " " 1);
 		else if (width)
 		{
 			--(*i);

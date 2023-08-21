@@ -18,7 +18,7 @@ int retrieve_width(const char *format, int *i, va_list lists)
 		if (is_digits(format[curl_t]))
 		{
 			breadth *= 10;
-			breadth += format[curr_i] - '0';
+			breadth += format[curl_t] - '0';
 		}
 		else if (format[curl_t] == '*')
 		{

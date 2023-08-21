@@ -13,17 +13,17 @@ int retrieve_flags(const char *format, int *i)
 	const char FLAGS_CHAR[] = {'-', '+', '0', '#', ' ', '\0'};
 	const int FLAGS_ARRAY[] = {FS_MINUS, FS_PLUS, FS_ZERO, FS_HASH, FS_SPACE, 0};
 
-	for (curl_t = *i + 1; format[curl_t] != '\0', curl_t++)
+	for (curl_t = *i + 1; format[curl_t] != '\0'; curl_t++)
 	{
 		for (j = 0; FLAGS_CHAR[j] != '\0'; j++)
 		{
 			if (format[curl_t] == FLAGS_CHAR[j])
 			{
-				flags |= FLAGS_ARR[j];
+				flags |= FLAGS_ARRAY[j];
 				break;
 			}
 		}
-		if (FLAG_CHAR[j] == 0)
+		if (FLAGS_CHAR[j] == 0)
 			break;
 	}
 

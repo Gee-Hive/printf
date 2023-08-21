@@ -105,7 +105,7 @@ int write_num(int index, char buffer[], int flags, int width, int precision, int
 		{
 			if (extra_c)
 				buffer[--index] =  extra_c;
-			return (write(1, &buffer[index], length) + write(1, &buffer[1], i - 1))
+			return (write(1, &buffer[index], length) + write(1, &buffer[1], i - 1));
 		}
 		else if (!(flags & FS_MINUS) && pad == '')
 		{

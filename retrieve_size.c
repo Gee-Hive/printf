@@ -6,7 +6,7 @@
  *
  * Return: size
  */
-int retrieve_size(const char *fomrat, int *i)
+int retrieve_size(const char *format, int *i)
 {
 	int curl_t = *i + 1;
 	int size = 0;
