@@ -158,7 +158,7 @@ int print_binary(va_list types, char buffer[], int flags, int width, int precisi
 
 	n = va_arg(types, unsigned int);
 	m = 2147483648;
-	a[0] = n/m;
+	a[0] = n / m;
 	for (o = 1; o < 32; o++)
 	{
 		m /= 2;
@@ -171,8 +171,8 @@ int print_binary(va_list types, char buffer[], int flags, int width, int precisi
 		{
 			z = '0' + a[o];
 			write(1, &z, 1);
-			count++;
+			counter++;
 		}
 	}
-	return (count);
+	return (counter);
 }

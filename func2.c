@@ -12,7 +12,7 @@
 
 int print_pointer(va_list types, char buffer[], int flags, int width, int precision, int size)
 {
-	char extra_ch = 0, padding = '';
+	char extra_ch = 0, padding = ' ';
 	int index = BUFFER_SIZE - 2, length = 2, padding_start = 1;
 	unsigned long number_address;
 	char map[] = "0123456789abcdef";
@@ -42,7 +42,7 @@ int print_pointer(va_list types, char buffer[], int flags, int width, int precis
 	if (flags & FS_PLUS)
 		extra_ch = '+', length++;
 	else if (flags & FS_SPACE)
-		extra_ch = '', length++;
+		extra_ch = ' ', length++;
 
 	index++;
 

@@ -14,7 +14,7 @@
 int handle_write_char(char c, char buffer[], int flags, int width, int precision, int size)
 {
 	int i = 0;
-	char pad = '';
+	char pad = ' ';
 
 	UNUSED(precision);
 	UNUSED(size);
@@ -52,7 +52,7 @@ int handle_write_char(char c, char buffer[], int flags, int width, int precision
 int write_number(int is_negative, int index, char buffer[], int flags, int width, int precision, int size)
 {
 	int length = BUFFER_SIZE - index -1;
-	char padding = "", extra_ch = 0;
+	char padding = ' ', extra_ch = 0;
 
 	UNUSED(size);
 
@@ -63,7 +63,7 @@ int write_number(int is_negative, int index, char buffer[], int flags, int width
 	else if (flags & FS_PLUS)
 		extra_ch = '+';
 	else if (flags & FS_SPACE)
-		extra_ch = '';
+		extra_ch = ' ';
 
 	return (write_num(index, buffer, flags, width, precision, length, padding, extra_ch));
 }
@@ -89,9 +89,9 @@ int write_num(int index, char buffer[], int flags, int width, int precision, int
 	if (precision == 0 && index == BUFFER_SIZE - 2 && buffer[index] == '0' && width == 0)
 		return (0);
 	if (precision == 0 && index == BUFFER_SIZE - 2 && buffer[index] == '0')
-		buffer[index] = pad = '';
+		buffer[index] = pad = ' ';
 	if (precision > 0 && precision < length)
-		pad = '';
+		pad = ' ';
 	while (precision > length)
 		buffer[--index] = '0', length++;
 	if (extra_c != 0)
@@ -101,13 +101,13 @@ int write_num(int index, char buffer[], int flags, int width, int precision, int
 		for (i = 1; i < width - length + 1; i++)
 			buffer[i] = pad;
 		buffer[i] = '\0';
-		if (flags & FS_MINUS && pad == '')
+		if (flags & FS_MINUS && pad == ' ')
 		{
 			if (extra_c)
 				buffer[--index] =  extra_c;
 			return (write(1, &buffer[index], length) + write(1, &buffer[1], i - 1));
 		}
-		else if (!(flags & FS_MINUS) && pad == '')
+		else if (!(flags & FS_MINUS) && pad == ' ')
 		{
 			if (extra_c)
 				buffer[--index] = extra_c;
@@ -140,8 +140,8 @@ int write_num(int index, char buffer[], int flags, int width, int precision, int
  */
 int write_unsgnd(int is_negative, int index, char buffer[], int flags, int width, int precision, int size)
 {
-	int length = BUFFER_SIZE - index - 1; i = 0;
-	char padding = '';
+	int length = BUFFER_SIZE - index - 1, i = 0;
+	char padding = ' ';
 
 	UNUSED(is_negative);
 	UNUSED(size);
@@ -150,7 +150,7 @@ int write_unsgnd(int is_negative, int index, char buffer[], int flags, int width
 		return (0);
 
 	if (precision > 0 && precision < length)
-		padding = '';
+		padding = ' ';
 
 	while (precision > length)
 	{
@@ -170,11 +170,11 @@ int write_unsgnd(int is_negative, int index, char buffer[], int flags, int width
 
 		if (flags & FS_MINUS)
 		{
-			return (write(1, &buffer[index], length) + write(1, &buffer[0], i))'
+			return (write(1, &buffer[index], length) + write(1, &buffer[0], i));
 		}
 		else
 		{
-			return (write(1, &buffer[0], i) + write(1, &buffer[index], length))'
+			return (write(1, &buffer[0], i) + write(1, &buffer[index], length));
 		}
 	}
 	return (write(1, &buffer[index], length));
@@ -202,7 +202,7 @@ int write_pointer(char buffer[], int index, int length, int width, int flags, ch
 		for (i = 3; i < width - length + 3; i++)
 			buffer[i] = pad;
 		buffer[i] = '\0';
-		if (flags & FS_MINUS && pad = '')
+		if (flags & FS_MINUS && pad == ' ')
 		{
 			buffer[--index] = 'x';
 			buffer[--index] = '0';
@@ -210,7 +210,7 @@ int write_pointer(char buffer[], int index, int length, int width, int flags, ch
 				buffer[--index] = extra_c;
 			return (write(1, &buffer[index], length) + write(1, &buffer[3], i - 3));
 		}
-		else if (!(flags & FS_MINUS) && pad == '')
+		else if (!(flags & FS_MINUS) && pad == ' ')
 		{
 			buffer[--index] = 'x';
 			buffer[--index] = '0';
@@ -221,7 +221,7 @@ int write_pointer(char buffer[], int index, int length, int width, int flags, ch
 		else if (!(flags & FS_MINUS) && pad == '0')
 		{
 			if (extra_c)
-				buffer[--padd_start] = extra_c;
+				buffer[--pad_start] = extra_c;
 			buffer[1] = '0';
 			buffer[2] = 'x';
 			return (write(1, &buffer[pad_start], i - pad_start) + write(1, &buffer[index], length - (1 - pad_start) - 2));

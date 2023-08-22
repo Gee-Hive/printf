@@ -27,7 +27,7 @@
 struct fmt
 {
 	char fmt;
-	int (*fn)(va_list[], int, int, int, int);
+	int (*fn)(va_list, char[], int, int, int, int);
 };
 
 /**
@@ -54,7 +54,7 @@ int print_int(va_list types, char buffer[], int flags, int width, int precision,
 int print_octal(va_list types, char buffer[], int flags, int width, int precision, int size);
 int print_hexadecimal(va_list types, char buffer[], int flags, int width, int precision, int size);
 int print_hexa(va_list types, char map[], char buffer[], int flags, char flag_ch, int width, int precision, int size);
-int print_hexa_toUpper(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_hexa_upper(va_list types, char buffer[], int flags, int width, int precision, int size);
 
 /* width handlers */
 int write_unsgnd(int is_negative, int index, char buffer[], int flags, int width, int precision, int size);
@@ -66,20 +66,29 @@ int write_num(int index, char buffer[], int flags, int width, int precision, int
 /* functions for printing memory address */
 int print_pointer(va_list types, char buffer[], int flags, int width, int precision, int size);
 
+/* print non printable char*/
+int print_non_printable(va_list types, char buffer[], int flags, int width, int precision, int size);
+
 /* functions for handling some other specifiers */
 int retrieve_flags(const char *format, int *i);
 int retrieve_width(const char *format, int *i, va_list lists);
 int retrieve_precision(const char *format, int *i, va_list lists);
 int retrieve_size(const char *format, int *i);
 
+/* functions to print reverse*/
+int print_reverse(va_list types, char buffer[], int flags, int width, int precision, int size);
+
+/*function to print rot13*/
+int print_rot13string(va_list types, char buffer[], int flags, int width, int precision, int size);
+
+
+
 /* utils */
 int is_printable(char);
 int append_hexa_code(char, char[], int);
 int is_digits(char);
-int is_printable(char);
 
 long int convert_size_number(long int num, int size);
-long int convert_size_unsigned(unsigned long int num, int size);
-
+long int convert_size_unsgnd(unsigned long int num, int size);
 
 #endif

@@ -22,7 +22,7 @@ int handle_print(const char *fmt, int *i, va_list lists, char buffer[], int flag
 		{'r', print_reverse}, {'R', print_rot13string}, {'\0', NULL}
 	};
 	
-	for (index = 0; fmt_types[index].fmt != '\0'; i++)
+	for (index = 0; fmt_types[index].fmt != '\0'; index++)
 		if (fmt[*i] == fmt_types[index].fmt)
 			return (fmt_types[index].fn(lists, buffer, flags, width, precision, size));
 	if (fmt_types[index].fmt == '\0')
@@ -31,18 +31,18 @@ int handle_print(const char *fmt, int *i, va_list lists, char buffer[], int flag
 			return (-1);
 		unknown_length += write(1, "%%", 1);
 		
-		if (fmt[*i - 1] == '')
-			unknown_length += write(1, " " 1);
+		if (fmt[*i - 1] == ' ')
+			unknown_length += write(1, " ", 1);
 		else if (width)
 		{
 			--(*i);
-			while (fmt[*i] !- '' && fmt[*i] != '%')
+			while (fmt[*i] != ' ' && fmt[*i] != '%')
 				--(*i);
-			if (fmt[*i] == '')
+			if (fmt[*i] == ' ')
 				--(*i);
 			return (1);
 		}
-		unknown_length += write(1, &fmt[i], 1);
+		unknown_length += write(1, &fmt[*i], 1);
 		return (unknown_length);
 	}
 	return (printed_chars);
