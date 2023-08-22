@@ -107,25 +107,25 @@ int print_int(va_list types, char buffer[], int flags, int width, int precision,
 	int i = BUFFER_SIZE - 2;
 	int is_negative = 0;
 	long int n = va_arg(types, long int);
-	unsigned long int num;
+	unsigned long int numbre;
 
 	n = convert_size_number(n, size);
 
 	if (n == 0)
 		buffer[i--] = '\0';
 	buffer[BUFFER_SIZE - 1] = '\0';
-	num = (unsigned long int)n;
+	numbre = (unsigned long int)n;
 
 	if (n < 0)
 	{
-		num = (unsigned long int)((-1) * n);
+		numbre = (unsigned long int)((-1) * n);
 		is_negative = 1;
 	}
 
-	while (num > 0)
+	while (numbre > 0)
 	{
-		buffer[i--] = (num % 10) + '0';
-		num /= 10;
+		buffer[i--] = (numbre % 10) + '0';
+		numbre /= 10;
 	}
 
 	i++;
@@ -170,7 +170,7 @@ int print_binary(va_list types, char buffer[], int flags, int width, int precisi
 		if (sum || o == 31)
 		{
 			z = '0' + a[o];
-			write(1, &z, 1);
+			_putcharr(z);
 			counter++;
 		}
 	}

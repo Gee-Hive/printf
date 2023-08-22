@@ -120,7 +120,7 @@ int print_reverse(va_list types, char buffer[], int flags, int width, int precis
 	{
 		z = s[i];
 
-		write(1, &z, 1);
+		_putcharr(z);
 		counter++;
 	}
 	return (counter);
@@ -161,7 +161,7 @@ int print_rot13string(va_list types, char buffer[], int flags, int width, int pr
 			if (in_side[j] == s[i])
 			{
 				x = out_side[i];
-				write(1, &x, 1);
+				_putcharr(x);
 				count++;
 				break;
 			}
@@ -169,7 +169,7 @@ int print_rot13string(va_list types, char buffer[], int flags, int width, int pr
 		if (!in_side[j])
 		{
 			x = s[i];
-			write(1, &x, 1);
+			_putcharr(x);
 			count++;
 		}
 	}
