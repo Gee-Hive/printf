@@ -42,7 +42,7 @@ int handle_print(const char *fmt, int *i, va_list lists, char buffer[], int flag
 				--(*i);
 			return (1);
 		}
-		unknown_length += write(1, &fmt[*i], 1);
+		unknown_length += _putcharr(fmt[*i]);
 		return (unknown_length);
 	}
 	return (printed_chars);

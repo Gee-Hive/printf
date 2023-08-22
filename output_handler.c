@@ -30,11 +30,11 @@ int handle_write_char(char c, char buffer[], int flags, int width, int precision
 		for (i = 0; i < width - 1; i++)
 			buffer[BUFFER_SIZE - i - 2] = pad;
 		if (flags & FS_MINUS)
-			return(write(1, &buffer[0], 1) + write(1, &buffer[BUFFER_SIZE - i - 1], width - 1));
+			return(_putcharr(buffer[0]) + write(1, &buffer[BUFFER_SIZE - i - 1], width - 1));
 		else
-			return (write(1, &buffer[BUFFER_SIZE - i - 1], width - 1) + write(1, &buffer[0], 1));
+			return (write(1, &buffer[BUFFER_SIZE - i - 1], width - 1) + _putcharr(buffer[0]));
 	}
-	return (write(1, &buffer[0], 1));
+	return (_putcharr(buffer[0]));
 }
 
 /**
